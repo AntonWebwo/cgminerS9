@@ -1,117 +1,24 @@
-#Makefile for C/C++ Program
-#
-# License: GPL (General Public License)
-# Author:  whyglinux <whyglinux AT gmail DOT com>
-# Date:    2006/03/04 (version 0.1)
-#          2007/03/24 (version 0.2)
-#          2007/04/09 (version 0.3)
-#          2007/06/26 (version 0.4)
-#          2008/04/05 (version 0.5)
-#
-# Description:
-# ------------
-# This is an easily customizable makefile template. The purpose is to
-# provide an instant building environment for C/C++ programs.
-#
-# It searches all the C/C++ source files in the specified directories,
-# makes dependencies, compiles and links to form an executable.
-#
-# Besides its default ability to build C/C++ programs which use only
-# standard C/C++ libraries, you can customize the Makefile to build
-# those using other libraries. Once done, without any changes you can
-# then build programs using the same or less libraries, even if source
-# files are renamed, added or removed. Therefore, it is particularly
-# convenient to use it to build codes for experimental or study use.
-#
-# GNU make is expected to use the Makefile. Other versions of makes
-# may or may not work.
-#
-# Usage:
-# ------
-# 1. Copy the Makefile to your program directory.
-# 2. Customize in the "Customizable Section" only if necessary:
-#    * to use non-standard C/C++ libraries, set pre-processor or compiler
-#      options to <MY_CFLAGS> and linker ones to <MY_LIBS>
-#      (See Makefile.gtk+-2.0 for an example)
-#    * to search sources in more directories, set to <SRCDIRS>
-#    * to specify your favorite program name, set to <PROGRAM>
-# 3. Type make to start building your program.
-#
-# Make Target:
-# ------------
-# The Makefile provides the following targets to make:
-#   $ make           compile and link
-#   $ make NODEP=yes compile and link without generating dependencies
-#   $ make objs      compile only (no linking)
-#   $ make tags      create tags for Emacs editor
-#   $ make ctags     create ctags for VI editor
-#   $ make clean     clean objects and the executable file
-#   $ make distclean clean objects, the executable and dependencies
-#   $ make help      get the usage of the makefile
-#
-#===========================================================================
-
-## Customizable Section: adapt those variables to suit your program.
-##==========================================================================
-
+XILINX_BASE_PATH=$(CURDIR)/build-tools/gcc-linaro-arm-linux-gnueabihf-4.7-2012.11-20121123_linux
+XILINX_OTHER_LIB_BASE_PATH=$(CURDIR)/build-tools/prebuilt-libs/linux-armhf
 USR = $(XILINX_BASE_PATH)/arm-linux-gnueabihf/libc/usr
 XILINX_INC = $(USR)/include
 XILINX_LIBDIR = $(USR)/lib
 
-# The pre-processor and compiler options.
-# MY_CFLAGS = -ggdb3 -pipe -O2 -Wall -Wextra -fopenmp -march=native -mfpmath=sse -DLINUX -m64 -std=c++0x
 MY_CFLAGS = -O2 -pthread -I$(XILINX_INC) -L$(XILINX_LIBDIR) -I./ -I./ccan/opt -I./compat/jansson-2.6/src -I./lib -I$(XILINX_OTHER_LIB_BASE_PATH)/include
-#-Itest1/include -Itest2/include -Itest1/include/test1 -Itest2/include/test2
-
-# The linker options.
-# MY_LIBS   = -lGLEW -lglut -lGLU -lGL -lX11 -lXmu -lXi -lm -L/usr/X11R6/lib -lgomp -lOpenThreads -lpthread
 MY_LIBS   = -lm -lrt $(XILINX_OTHER_LIB_BASE_PATH)/lib/libz.a
-
-# The pre-processor options used by the cpp (man cpp for more).
 CPPFLAGS  = 
-
-# The options used in linking as well as in any direct use of ld.
 LDFLAGS   = 
-
-# The directories in which source files reside.
-# If not specified, only the current directory will be serached.
 SRCDIRS   = . ccan/opt compat/jansson-2.6/src lib
-
-
-# The executable file name.
-# If not specified, current directory name or `a.out' will be used.
 PROGRAM   = bmminer
-
-## Implicit Section: change the following only when necessary.
-##==========================================================================
-
-# The source file types (headers excluded).
-# .c indicates C source files, and others C++ ones.
 SRCEXTS = .c .C .cc .cpp .CPP .c++ .cxx .cp
-
-# The header file types.
 HDREXTS = .h .H .hh .hpp .HPP .h++ .hxx .hp
-
-# The pre-processor and compiler options.
-# Users can override those variables from the command line.
 CFLAGS  = 
-# CXXFLAGS= -std=c++0x
 CXXFLAGS= 
-# The C program compiler.
 CC     = $(XILINX_BASE_PATH)/bin/arm-linux-gnueabihf-gcc
-
-# The C++ program compiler.
 CXX    = $(XILINX_BASE_PATH)/bin/arm-linux-gnueabihf-g++
-
-# Un-comment the following line to compile C programs as C++ ones.
-#CC     = $(CXX)
-
-# The command used to delete file.
 RM     = rm -f
-
 ETAGS = etags
 ETAGSFLAGS =
-
 CTAGS = ctags
 CTAGSFLAGS =
 
@@ -245,7 +152,7 @@ endif
 endif
 
 clean:
-	$(RM) $(OBJS) $(PROGRAM) $(PROGRAM).exe
+	$(RM) $(OBJS)
 
 distclean: clean
 	$(RM) $(DEPS) TAGS
