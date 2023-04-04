@@ -34,17 +34,6 @@ git clone https://github.com/AntonWebwo/prebuilt-angstrom
 
 cd ..
 
-# Редактируем файл Makefile
-
-gedit Makefile
-
-# Добавляем 2 строки после всех коментариев, в начало раздела "Customizable Section"
-
-XILINX_BASE_PATH=$(CURDIR)/build-tools/gcc-linaro-arm-linux-gnueabihf-4.7-2012.11-20121123_linux
-XILINX_OTHER_LIB_BASE_PATH=$(CURDIR)/build-tools/prebuilt-angstrom/linux-armhf
-
-# Сохраняем файл и закрываем gedit
-
 # Выбираем тип асика (Нас интересует Antminer S9)
 
 ./setminertype S9
