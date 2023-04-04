@@ -1,5 +1,5 @@
 XILINX_BASE_PATH=$(CURDIR)/build-tools/gcc-linaro-arm-linux-gnueabihf-4.7-2012.11-20121123_linux
-XILINX_OTHER_LIB_BASE_PATH=$(CURDIR)/build-tools/prebuilt-libs/linux-armhf
+XILINX_OTHER_LIB_BASE_PATH=$(CURDIR)/build-tools/prebuilt-libz/linux-armhf
 USR = $(XILINX_BASE_PATH)/arm-linux-gnueabihf/libc/usr
 XILINX_INC = $(USR)/include
 XILINX_LIBDIR = $(USR)/lib
