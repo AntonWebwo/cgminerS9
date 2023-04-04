@@ -19,7 +19,7 @@ cd build-tools
 
 # Получаем компилятор и распаковываем его
 
-wget https://releases.linaro.org/archive/12.11/components/toolchain/binaries/gcc-linaro-arm-linux-gnueabihf-4.7-2012.11-20121123_linux.tar.bz2
+wget https://minerflash.ru/files/gcc-linaro-arm-linux-gnueabihf-4.7-2012.11-20121123_linux.tar.bz2
 tar xvf gcc-linaro-arm-linux-gnueabihf-4.7-2012.11-20121123_linux.tar.bz2
 
 # Для экономии места удаляем скаченый архив
