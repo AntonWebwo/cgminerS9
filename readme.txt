@@ -28,7 +28,7 @@ rm gcc-linaro-arm-linux-gnueabihf-4.7-2012.11-20121123_linux.tar.bz2
 
 # Получаем библиотеки для компиляции под xilinx
 
-git clone https://github.com/AntonWebwo/prebuilt-angstrom
+git clone https://github.com/AntonWebwo/prebuilt-libs
 
 # Возвращаемся в рабочий каталог cgminerS9
 
