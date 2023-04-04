@@ -45,10 +45,6 @@ XILINX_OTHER_LIB_BASE_PATH=$(CURDIR)/build-tools/prebuilt-angstrom/linux-armhf
 
 # Сохраняем файл и закрываем gedit
 
-# Производим очистку каталога от лишних файлов
-
-make clean
-
 # Выбираем тип асика (Нас интересует Antminer S9)
 
 ./setminertype S9
@@ -57,4 +53,9 @@ make clean
 
 make
 
-# По окончанию сборки наблюдаем в каталоге cgminerS9 наш bmminer
+# Производим очистку каталога от лишних файлов
+
+make clean
+
+# По окончанию очистки наблюдаем в каталоге cgminerS9 наш bmminer
+# В зависимости от прошивки (для стоковой оставляем имя файла), для других переименовать в cgminer
